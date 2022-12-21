@@ -5,8 +5,8 @@
 # classes, `Workable` and `Eatable`, then we can seperate normal worker from 
 # robot. As a result, we don't need to implement `eat` method in robot anymore.
 
-from abc import ABCMeta, abstractmethod
 import time
+from abc import ABCMeta, abstractmethod
 
 class Workable(object):
     __metaclass__ = ABCMeta

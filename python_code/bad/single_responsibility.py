@@ -18,6 +18,7 @@ class IEmail(object):
     def set_content(self, content):
         pass
 
+
 class Email(IEmail):
 
     def __init__(self, protocol, content_type):
@@ -33,23 +34,24 @@ class Email(IEmail):
         else:
             self.__sender = sender
 
-    def set_receiver(self, receiver):
-        if self.protocol == 'IM':
-            self.__receiver = ''.join(["I'm ", receiver])
-        else:
-            self.__receiver = receiver
-
     def set_content(self, content):
         if self.content_type == 'MyML':
             self.__content = '\n'.join(['<myML>', content, '</myML>'])
         else:
             self.__content = content
 
+    def set_receiver(self, receiver):
+        if self.protocol == 'IM':
+            self.__receiver = ''.join(["I'm ", receiver])
+        else:
+            self.__receiver = receiver
+
+
     def __repr__(self):
 
         template = "Sender: {sender}\nReceiver: {receiver}\nContent:\n{content}"
-
         return template.format(sender = self.__sender, receiver = self.__receiver, content = self.__content)
+
 
 def main():
     email = Email('IM', 'MyML')
@@ -57,6 +59,7 @@ def main():
     email.set_receiver('james')
     email.set_content('Hello, there!')
     print(email)
+
 
 if __name__ == '__main__':
     main()
